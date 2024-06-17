@@ -1,0 +1,9 @@
+ch6 : 新增 react 專案
+	新增專案
+		npx create-vite my-first-react-app
+	不論是新增專案或是從github拉下來的新專案都要先新增node
+		npm i
+	開啟server掛在本機
+		npm run dev
+	交案時使用,會把檔案把包道dist資料夾內
+		npm build
