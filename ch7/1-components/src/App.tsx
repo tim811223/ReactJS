@@ -1,10 +1,10 @@
 import { Anya } from './Anya';
-import { ClassAnay } from './ClassComponent';
+// import { ClassAnay } from './ClassComponent';
 
 export const App = () => {
   return (
     <>
-      <ClassAnay />
+      {/* <ClassAnay /> */}
       <Anya />
     </>
   );
