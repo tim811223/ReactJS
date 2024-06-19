@@ -1,11 +1,9 @@
-import Anya from './Anya'
+import { Anya } from './Anya'
 
-function App() {
+export const App = () => {
   return (
     <>
       <Anya />
     </>
   )
 }
-
-export default App
