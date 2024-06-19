@@ -1,4 +1,6 @@
 import { Anya } from './Anya';
+import { Loid } from './Loid';
+import { Yor } from './Yor';
 // import { ClassAnay } from './ClassComponent';
 
 export const App = () => {
@@ -6,6 +8,8 @@ export const App = () => {
     <>
       {/* <ClassAnay /> */}
       <Anya />
+      <Loid />
+      <Yor />
     </>
   );
 };
