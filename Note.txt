@@ -1,3 +1,12 @@
+/****************************
+* 套件 Prettier - Code formatter
+* 若想程式排版使用以下指令
+* *檢查那些檔案未遵守排版規則
+* 	npx prettier --check .
+* *自動排版後複寫檔案
+* 	npx prettier --check .
+****************************/
+
 ch6 : 新增 react 專案
 	新增專案
 		npx create-vite my-first-react-app

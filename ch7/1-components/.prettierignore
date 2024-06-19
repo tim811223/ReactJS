@@ -1,0 +1,6 @@
+# 套件 Prettier - Code formatter 不檢查以下檔案
+package-lock.json
+*.cjs
+.gitignore
+.prettierignore
+# .prettierrc.js
