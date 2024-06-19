@@ -1,5 +1,11 @@
+import Anya from './Anya'
+
 function App() {
-  return <></>
+  return (
+    <>
+      <Anya />
+    </>
+  )
 }
 
 export default App
