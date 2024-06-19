@@ -3,5 +3,5 @@ export const Anya = () => {
     <>
       <h1>Anya</h1>
     </>
-  )
-}
+  );
+};

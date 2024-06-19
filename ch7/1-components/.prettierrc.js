@@ -7,8 +7,8 @@
 const config = {
   trailingComma: 'es5',
   tabWidth: 2, //指定每個縮排等級的空格數。
-  semi: false, //在語句末尾列印分號。
+  semi: true, //在語句末尾列印分號。
   singleQuote: true, //使用單引號而不是雙引號。
-}
+};
 
-export default config
+export default config;
