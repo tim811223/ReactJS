@@ -6,9 +6,21 @@ import { Yor } from './Yor';
 export const SpyFamily = () => {
   return (
     <>
-      <Anya />
-      <Loid />
-      <Yor />
+      <div className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-3">
+              <Anya />
+            </div>
+            <div className="column is-3">
+              <Loid />
+            </div>
+            <div className="column is-3">
+              <Yor />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
