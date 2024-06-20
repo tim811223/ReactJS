@@ -6,16 +6,16 @@ interface Props {
   description: string;
 }
 
-export const Card: FC<Props> = (p: Props) => {
+export const Card: FC<Props> = ({image,name,description}) => {
   return (
     <>
       <div className="card">
         <div className="card-image">
-          <img src={p.image}></img>
+          <img src={image}></img>
         </div>
         <div className="card-content">
-          <h3 className="title is-3">{p.name}</h3>
-          <p>{p.description}</p>
+          <h3 className="title is-3">{name}</h3>
+          <p>{description}</p>
         </div>
       </div>
     </>
