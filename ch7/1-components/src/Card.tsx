@@ -6,7 +6,7 @@ interface Props {
   description: string;
 }
 
-export const Card: FC<Props> = ({image,name,description}) => {
+export const Card: FC<Props> = ({ image, name, description }) => {
   return (
     <>
       <div className="card">
