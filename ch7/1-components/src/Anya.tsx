@@ -8,7 +8,7 @@ export const Anya = () => {
           <img src={foto1}></img>
         </div>
         <div className="card-content">
-          <h1>Anya</h1>
+          <h3 className="title is-3">Anya</h3>
           <p>this is foto 1</p>
         </div>
       </div>

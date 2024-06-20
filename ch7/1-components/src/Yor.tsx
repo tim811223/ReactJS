@@ -8,7 +8,7 @@ export const Yor = () => {
           <img src={foto3}></img>
         </div>
         <div className="card-content">
-          <h1>Yor</h1>
+          <h3 className="title is-3">Yor</h3>
           <p>this is foto 3</p>
         </div>
       </div>

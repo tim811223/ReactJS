@@ -8,7 +8,7 @@ export const Loid = () => {
           <img src={foto2}></img>
         </div>
         <div className="card-content">
-          <h1>Loid</h1>
+          <h3 className="title is-3">Loid</h3>
           <p>this is foto 2</p>
         </div>
       </div>
