@@ -1,7 +1,14 @@
-import { Card } from './Card';
+import { FC } from 'react';
+import { Card, Props as CardProps } from './Card';
+
+type Role = CardProps;
+
+interface Props {
+  roles: Role[];
+}
 
 //此Component為一個容器裝[Anya,Loid,Yor]
-export const SpyFamily = () => {
+export const SpyFamily: FC<Props> = ({ roles }) => {
   return (
     <>
       <div className="section">

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-interface Props {
+export interface Props {
   image: string;
   name: string;
   description: string;
