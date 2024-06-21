@@ -14,15 +14,15 @@ export const SpyFamily: FC<Props> = ({ roles }) => {
       <div className="section">
         <div className="container">
           <div className="columns">
-            <div className="column is-3">
-              <Card image="/1.png" name="Anya" description="this is foto 1" />
-            </div>
-            <div className="column is-3">
-              <Card image="/2.png" name="Loid" description="this is foto 2" />
-            </div>
-            <div className="column is-3">
-              <Card image="/3.png" name="Yor" description="this is foto 3" />
-            </div>
+            {roles.map((r) => (
+              <div className="column is-3">
+                <Card
+                  image={r.image}
+                  name={r.name}
+                  description={r.description}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
