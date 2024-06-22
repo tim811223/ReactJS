@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import './Card.css';
 
 export interface Props {
   image: string;
