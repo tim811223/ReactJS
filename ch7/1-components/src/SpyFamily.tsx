@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Card, Props as CardProps } from './Card';
+import { Yor } from './Yor';
 
 export type Role = CardProps;
 
@@ -25,6 +26,9 @@ export const SpyFamily: FC<Props> = ({ roles }) => {
                 <Card {...r} />
               </div>
             ))}
+            <div className="column is-3">
+              <Yor />
+            </div>
           </div>
         </div>
       </div>
