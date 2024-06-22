@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Card, Props as CardProps } from './Card';
 
-type Role = CardProps;
+export type Role = CardProps;
 
 interface Props {
   roles: Role[];
@@ -21,6 +21,8 @@ export const SpyFamily: FC<Props> = ({ roles }) => {
                   name={r.name}
                   description={r.description}
                 />
+                {/* 簡化的寫法 */}
+                <Card {...r} />
               </div>
             ))}
           </div>
