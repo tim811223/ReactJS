@@ -5,7 +5,7 @@ export const Yor = () => {
     <>
       <div className="card">
         <div className="card-image">
-          <img src={foto3}></img>
+          <img src={foto3} className="bordered-image"></img>
         </div>
         <div className="card-content">
           <h3 className="title is-3">Yor</h3>
