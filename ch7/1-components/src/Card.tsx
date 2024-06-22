@@ -11,7 +11,7 @@ export interface Props {
 export const Card: FC<Props> = ({ image, name, description }) => {
   return (
     <>
-      <div className="card">
+      <div className="my-card">
         <div className="card-image">
           <img src={image}></img>
         </div>
