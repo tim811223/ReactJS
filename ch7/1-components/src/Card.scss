@@ -4,8 +4,8 @@
 /* sass 特有寫法"參數"使用$符號表是 */
 $barbie-pink: #e0218a;
 
-.my-card {
-  @extend .card; // 用 @extend,若是希望在card 的基礎上加上自訂的css
+.card {
+  // @extend .card; // 用 @extend,若是希望在card 的基礎上加上自訂的css
   .card-image {
     img {
       border: 1px solid red;

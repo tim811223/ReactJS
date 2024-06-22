@@ -16,11 +16,11 @@ export const SpyFamily: FC<Props> = ({ roles }) => {
           <div className="columns">
             {roles.map((r) => (
               <div className="column is-3">
-                <Card
+                {/* <Card
                   image={r.image}
                   name={r.name}
                   description={r.description}
-                />
+                /> */}
                 {/* 簡化的寫法 */}
                 <Card {...r} />
               </div>
