@@ -13,6 +13,9 @@
 */
 
 /* 新寫法 */
+/* sass 特有寫法"參數"使用$符號表是 */
+$barbie-pink:#E0218A;
+
 .card {
   .card-image {
     img {
@@ -21,6 +24,7 @@
   }
 
   .card-content {
+    background-color: $barbie-pink;
     h3 {
       color: blue;
     }
