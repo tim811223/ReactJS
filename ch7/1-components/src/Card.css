@@ -1,3 +1,4 @@
+/* 
 .card .card-image img {
   border: 1px solid red;
 }
@@ -8,4 +9,23 @@
 
 .card .card-content p {
   font-weight: bold;
+} 
+*/
+
+/* 新寫法 */
+.card {
+  & .card-image {
+    & img {
+      border: 1px solid red;
+    }
+  }
+
+  & .card-content {
+    & h3 {
+      color: blue;
+    }
+    & p {
+      font-weight: bold;
+    }
+  }
 }
