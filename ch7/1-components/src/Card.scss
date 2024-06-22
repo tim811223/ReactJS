@@ -1,18 +1,5 @@
-/* 
-.card .card-image img {
-  border: 1px solid red;
-}
+@import '../node_modules/bulma/sass/utilities/derived-variables.scss';
 
-.card .card-content h3 {
-  color: blue;
-}
-
-.card .card-content p {
-  font-weight: bold;
-} 
-*/
-
-/* 新寫法 */
 /* sass 特有寫法"參數"使用$符號表是 */
 $barbie-pink:#E0218A;
 
@@ -24,7 +11,8 @@ $barbie-pink:#E0218A;
   }
 
   .card-content {
-    background-color: $barbie-pink;
+    // background-color: $barbie-pink;  //自定義的css參數
+    background-color: $primary;         //bulma的css參數
     h3 {
       color: blue;
     }
