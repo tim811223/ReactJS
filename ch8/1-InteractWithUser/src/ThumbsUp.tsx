@@ -7,9 +7,8 @@ export const ThumbsUp = () => {
     <button className="button">
       <span className="icon">
         <FontAwesomeIcon icon={faThumbsUp} />
-        <i className="fab fa-github"></i>
       </span>
-      <span>GitHub</span>
+      <span>{likes}</span>
     </button>
   );
 };
