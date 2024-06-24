@@ -8,7 +8,7 @@ export const App = () => {
     <div className="section">
       <div className="container">
         <ThumbsUp />
-        <ThumbsDown/>
+        <ThumbsDown />
       </div>
     </div>
   );
