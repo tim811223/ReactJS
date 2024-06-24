@@ -1,11 +1,29 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 export const Editor: FC = () => {
+  /*************
+   * State Area
+   * ***********/
+  const [title, setTitle] = useState<string>("");
+
+  /*************
+   * Handler Area
+   * ***********/
+  const handleTitleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setTitle(e.target.value);
+  };
+
   return (
     <div className="box">
       <div className="field">
         <div className="conteol">
-          <input type="text" className="input" placeholder="title" />
+          <input
+            type="text"
+            className="input"
+            placeholder="title"
+            value={title}
+            onChange={handleTitleChange}
+          />
         </div>
       </div>
       <div className="columns is-vcentered">
