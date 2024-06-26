@@ -4,6 +4,7 @@ import { Todolist } from "./Todos/Todolist";
 
 export const App = () => {
   const todo = {
+    id: "id0",
     title: "Title",
     priority: 0,
     assignee: "bob",

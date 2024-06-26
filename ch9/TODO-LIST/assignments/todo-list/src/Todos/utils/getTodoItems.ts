@@ -1,6 +1,7 @@
 import _ from "lodash";
 
 export interface TodoItemModel {
+  id: string;
   title: string;
   content: string;
   priority: number;
@@ -13,6 +14,7 @@ export const getTodoItems = (n: number): TodoItemModel[] =>
   _.range(n).map((i) => {
     const t = Date.now();
     return {
+      id: `id${i}`,
       title: `title ${i}`,
       content: `content ${i} `.repeat(10),
       priority: i % 3,

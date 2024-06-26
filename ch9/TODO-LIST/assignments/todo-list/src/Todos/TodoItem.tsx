@@ -11,6 +11,7 @@ export enum Priority {
 }
 
 export interface Props {
+  id: string;
   title: string;
   content: string;
   priority: Priority;
@@ -19,6 +20,7 @@ export interface Props {
 }
 
 export const TodoItem: FC<Props> = ({
+  id,
   title,
   content,
   priority,
@@ -50,10 +52,15 @@ export const TodoItem: FC<Props> = ({
         </div>
         <div className="message-body">
           <div>{content}</div>
-          <div className="has-text-right">
-            {assignee ? (
-              <span className=" has-text-grey is-size-7">{`assigned to @${assignee}`}</span>
-            ) : null}
+          <div className="columns">
+            <div className="column">
+              <span className=" has-text-grey is-size-7">{`ID ${id}`}</span>
+            </div>
+            <div className="column has-text-right">
+              {assignee ? (
+                <span className=" has-text-grey is-size-7">{`assigned to @${assignee}`}</span>
+              ) : null}
+            </div>
           </div>
         </div>
       </article>
