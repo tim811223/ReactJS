@@ -1,6 +1,14 @@
 import { ChangeEventHandler, FC, useState } from "react";
-import { Props, Priority } from "./TodoItem";
+import { Props as TodoItemProps, Priority } from "./TodoItem";
 import teamMembers from "./team-members.json";
+
+/**
+ * 若使用的資料型別是共同的Componment,但有要客製內容就可以用extends
+ * 擴展TodoItemProps 到 Props後,就可以對Props新增客製內容
+ * **/
+interface Props extends TodoItemProps {
+  onCancel: () => void;
+}
 
 export const Editor: FC<Props> = (props) => {
   /*************
@@ -111,7 +119,13 @@ export const Editor: FC<Props> = (props) => {
             <div className="control">
               <div className="buttons has-addons">
                 <button className="button is-link"> Save </button>
-                <button className="button is-link is-light"> Cancel </button>
+                <button
+                  className="button is-link is-light"
+                  onClick={props.onCancel}
+                >
+                  {" "}
+                  Cancel{" "}
+                </button>
               </div>
             </div>
           </div>

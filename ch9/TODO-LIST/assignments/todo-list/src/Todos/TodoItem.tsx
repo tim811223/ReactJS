@@ -47,12 +47,23 @@ export const TodoItem: FC<Props> = ({
    * Handler Area
    * ***********/
   const handleEditingClick = () => setEditing(true);
+  const handleCancelClick = () => setEditing(false);
 
   return (
     <>
       {editing ? (
         /** 編輯畫面 **/
-        <Editor {...(id, title, content, priority, assignee, resolved)} />
+        <Editor
+          {...{
+            id,
+            title,
+            content,
+            priority,
+            assignee,
+            resolved,
+            onCancel: handleCancelClick,
+          }}
+        />
       ) : (
         /** 清單畫面 **/
         <article className={`message ${Types}`}>
