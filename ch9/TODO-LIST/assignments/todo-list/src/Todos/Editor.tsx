@@ -27,7 +27,6 @@ export const Editor: FC = () => {
   const handleContentChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setContent(e.target.value);
   };
-
   const handleResolvedChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setResolved(!resolved);
   };
