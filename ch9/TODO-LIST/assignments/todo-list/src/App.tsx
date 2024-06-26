@@ -1,5 +1,6 @@
-import { Editor } from "./Todos/Editor";
-import { TodoItem, Priority } from "./Todos/TodoItem";
+// import { Editor } from "./Todos/Editor";
+// import { TodoItem, Priority } from "./Todos/TodoItem";
+import "bulma/css/bulma.min.css";
 import { Todolist } from "./Todos/Todolist";
 
 export const App = () => {
@@ -14,10 +15,11 @@ export const App = () => {
 
   return (
     <>
+      {/*
       <Editor {...todo} />
 
       <TodoItem {...todo} />
-
+    */}
       <Todolist />
     </>
   );
