@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { v4 as uuid } from "uuid";
 
 export interface TodoItemModel {
   id: string;
@@ -6,6 +7,7 @@ export interface TodoItemModel {
   content: string;
   priority: number;
   resolved: boolean;
+  assignee?: string;
   createdAt: number;
   lastModifiedAt: number;
 }
@@ -14,11 +16,12 @@ export const getTodoItems = (n: number): TodoItemModel[] =>
   _.range(n).map((i) => {
     const t = Date.now();
     return {
-      id: `id${i}`,
+      id: uuid(),
       title: `title ${i}`,
       content: `content ${i} `.repeat(10),
       priority: i % 3,
       resolved: !(i % 7),
+      assignee: "",
       createdAt: t,
       lastModifiedAt: t,
     };
