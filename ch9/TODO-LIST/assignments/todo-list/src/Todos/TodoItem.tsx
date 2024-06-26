@@ -1,5 +1,8 @@
 import { FC } from "react";
 import "bulma/css/bulma.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export enum Priority {
   HIGH,
@@ -15,7 +18,13 @@ export interface Props {
   resolved: boolean;
 }
 
-export const TodoItem: FC<Props> = ({ title, content, priority, resolved }) => {
+export const TodoItem: FC<Props> = ({
+  title,
+  content,
+  priority,
+  assignee,
+  resolved,
+}) => {
   var Types = "";
   Types =
     priority == Priority.HIGH
@@ -31,9 +40,22 @@ export const TodoItem: FC<Props> = ({ title, content, priority, resolved }) => {
       <article className={`message ${Types}`}>
         <div className="message-header">
           <p>{title}</p>
-          <button className="delete" aria-label="delete"></button>
+          <span>
+            <FontAwesomeIcon
+              icon={faPenToSquare}
+              className="is-clickable mr-1"
+            />
+            <FontAwesomeIcon icon={faTrash} className="is-clickable" />
+          </span>
         </div>
-        <div className="message-body">{content}</div>
+        <div className="message-body">
+          <div>{content}</div>
+          <div className="has-text-right">
+            {assignee ? (
+              <span className=" has-text-grey is-size-7">{`assigned to @${assignee}`}</span>
+            ) : null}
+          </div>
+        </div>
       </article>
     </>
   );

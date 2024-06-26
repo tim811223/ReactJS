@@ -13,7 +13,7 @@ export const App = () => {
 
   return (
     <>
-      <Editor {...todo}/>
+      <Editor {...todo} />
 
       <TodoItem
         title={"title"}
