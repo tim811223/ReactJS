@@ -16,12 +16,7 @@ export const App = () => {
     <>
       <Editor {...todo} />
 
-      <TodoItem
-        title={"title"}
-        content={"content"}
-        priority={Priority.LOW}
-        resolved={false}
-      />
+      <TodoItem {...todo} />
 
       <Todolist />
     </>

@@ -3,6 +3,7 @@ import "bulma/css/bulma.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Editor } from "./Editor";
 
 export enum Priority {
   HIGH,
@@ -45,36 +46,42 @@ export const TodoItem: FC<Props> = ({
   /*************
    * Handler Area
    * ***********/
-  const handleEditingClick=()=>setEditing(true);
+  const handleEditingClick = () => setEditing(true);
 
   return (
     <>
-      <article className={`message ${Types}`}>
-        <div className="message-header">
-          <p>{title}</p>
-          <span>
-            <FontAwesomeIcon
-              icon={faPenToSquare}
-              className="is-clickable mr-1"
-              onClick={handleEditingClick}
-            />
-            <FontAwesomeIcon icon={faTrash} className="is-clickable" />
-          </span>
-        </div>
-        <div className="message-body">
-          <div>{content}</div>
-          <div className="columns">
-            <div className="column">
-              <span className=" has-text-grey is-size-7">{`ID ${id}`}</span>
-            </div>
-            <div className="column has-text-right">
-              {assignee ? (
-                <span className=" has-text-grey is-size-7">{`assigned to @${assignee}`}</span>
-              ) : null}
+      {editing ? (
+        /** 編輯畫面 **/
+        <Editor {...(id, title, content, priority, assignee, resolved)} />
+      ) : (
+        /** 清單畫面 **/
+        <article className={`message ${Types}`}>
+          <div className="message-header">
+            <p>{title}</p>
+            <span>
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                className="is-clickable mr-1"
+                onClick={handleEditingClick}
+              />
+              <FontAwesomeIcon icon={faTrash} className="is-clickable" />
+            </span>
+          </div>
+          <div className="message-body">
+            <div>{content}</div>
+            <div className="columns">
+              <div className="column">
+                <span className=" has-text-grey is-size-7">{`ID ${id}`}</span>
+              </div>
+              <div className="column has-text-right">
+                {assignee ? (
+                  <span className=" has-text-grey is-size-7">{`assigned to @${assignee}`}</span>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      )}
     </>
   );
 };
