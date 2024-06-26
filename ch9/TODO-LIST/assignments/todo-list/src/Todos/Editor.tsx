@@ -1,8 +1,8 @@
 import { ChangeEventHandler, FC, useState } from "react";
-import { Priority } from "./TodoItem";
+import { Props,Priority } from "./TodoItem";
 import teamMembers from "./team-members.json";
 
-export const Editor: FC = () => {
+export const Editor: FC<Props> = props => {
   /*************
    * State Area
    * ***********/
