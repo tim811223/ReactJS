@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "bulma/css/bulma.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
@@ -37,6 +37,16 @@ export const TodoItem: FC<Props> = ({
           ? "is-info"
           : "";
 
+  /*************
+   * State Area
+   * ***********/
+  const [editing, setEditing] = useState<boolean>(false);
+
+  /*************
+   * Handler Area
+   * ***********/
+  const handleEditingClick=()=>setEditing(true);
+
   return (
     <>
       <article className={`message ${Types}`}>
@@ -46,6 +56,7 @@ export const TodoItem: FC<Props> = ({
             <FontAwesomeIcon
               icon={faPenToSquare}
               className="is-clickable mr-1"
+              onClick={handleEditingClick}
             />
             <FontAwesomeIcon icon={faTrash} className="is-clickable" />
           </span>
