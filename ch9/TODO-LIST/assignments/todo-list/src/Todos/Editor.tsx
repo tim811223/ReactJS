@@ -10,6 +10,7 @@ export const Editor: FC = () => {
   const [priority, setPriority] = useState<Priority>(Priority.LOW);
   const [assignee, setAssignee] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [resolved, setResolved] = useState<boolean>(false);
 
   /*************
    * Handler Area
@@ -25,6 +26,10 @@ export const Editor: FC = () => {
   };
   const handleContentChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setContent(e.target.value);
+  };
+
+  const handleResolvedChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setResolved(!resolved);
   };
 
   return (
@@ -92,7 +97,12 @@ export const Editor: FC = () => {
           <div className="field">
             <div className="control">
               <label className="checkbox">
-                <input type="checkbox" /> Resolved{" "}
+                <input
+                  type="checkbox"
+                  checked={resolved}
+                  onChange={handleResolvedChange}
+                />{" "}
+                Resolved{" "}
               </label>
             </div>
           </div>
