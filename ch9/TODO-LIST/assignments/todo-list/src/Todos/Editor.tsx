@@ -1,16 +1,16 @@
 import { ChangeEventHandler, FC, useState } from "react";
-import { Props,Priority } from "./TodoItem";
+import { Props, Priority } from "./TodoItem";
 import teamMembers from "./team-members.json";
 
-export const Editor: FC<Props> = props => {
+export const Editor: FC<Props> = (props) => {
   /*************
    * State Area
    * ***********/
-  const [title, setTitle] = useState<string>("");
-  const [priority, setPriority] = useState<Priority>(Priority.LOW);
-  const [assignee, setAssignee] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [resolved, setResolved] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>(props.title);
+  const [priority, setPriority] = useState<Priority>(props.priority);
+  const [assignee, setAssignee] = useState<string>(props.assignee ?? "");
+  const [content, setContent] = useState<string>(props.content);
+  const [resolved, setResolved] = useState<boolean>(props.resolved);
 
   /*************
    * Handler Area
