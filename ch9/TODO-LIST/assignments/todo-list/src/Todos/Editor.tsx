@@ -9,6 +9,8 @@ export const Editor: FC = () => {
   const [title, setTitle] = useState<string>("");
   const [priority, setPriority] = useState<Priority>(Priority.LOW);
   const [assignee, setAssignee] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+
   /*************
    * Handler Area
    * ***********/
@@ -20,6 +22,9 @@ export const Editor: FC = () => {
   };
   const handleAssigneeChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
     setAssignee(e.target.value);
+  };
+  const handleContentChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+    setContent(e.target.value);
   };
 
   return (
@@ -74,7 +79,12 @@ export const Editor: FC = () => {
       </div>
       <div className="field">
         <div className="control">
-          <textarea className="textarea" placeholder="content" />
+          <textarea
+            className="textarea"
+            placeholder="content"
+            value={content}
+            onChange={handleContentChange}
+          />
         </div>
       </div>
       <div className="columns">
