@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Editor } from "./Editor";
+import { TodoItemModel } from "./utils/getTodoItems";
 
 export enum Priority {
   HIGH,
@@ -17,6 +18,7 @@ export interface Props {
   priority: Priority;
   assignee?: string;
   resolved: boolean;
+  updateTodo: (id: string, update: Partial<TodoItemModel>) => void;
 }
 
 export const TodoItem: FC<Props> = ({
@@ -26,6 +28,7 @@ export const TodoItem: FC<Props> = ({
   priority,
   assignee,
   resolved,
+  updateTodo,
 }) => {
   var Types = "";
   Types =
@@ -61,6 +64,7 @@ export const TodoItem: FC<Props> = ({
             assignee,
             resolved,
             onCancel: handleCancelClick,
+            updateTodo,
           }}
         />
       ) : (

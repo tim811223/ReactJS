@@ -38,6 +38,9 @@ export const Editor: FC<Props> = (props) => {
   const handleResolvedChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setResolved(!resolved);
   };
+  const handleSaveClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    console.log({ title, priority, assignee, content, resolved });
+  };
 
   return (
     <div className="box">
@@ -118,7 +121,10 @@ export const Editor: FC<Props> = (props) => {
           <div className="field is-grouped is-grouped-right">
             <div className="control">
               <div className="buttons has-addons">
-                <button className="button is-link"> Save </button>
+                <button className="button is-link" onClick={handleSaveClick}>
+                  {" "}
+                  Save{" "}
+                </button>
                 <button
                   className="button is-link is-light"
                   onClick={props.onCancel}

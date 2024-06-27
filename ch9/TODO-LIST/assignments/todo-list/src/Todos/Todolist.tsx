@@ -14,7 +14,7 @@ export const Todolist: FC = () => {
   return (
     <>
       {todos.map((i) => (
-        <TodoItem {...i} key={i.id} />
+        <TodoItem {...i} key={i.id} updateTodo={updateTodo} />
       ))}
     </>
   );
