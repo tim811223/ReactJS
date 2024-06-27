@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
 
 interface Props {
+  initVal?: number;
   colors: string[];
 }
 
-export const Palette: FC<Props> = ({ colors }) => {
-  const [val, setVal] = useState<number>(0);
+export const Palette: FC<Props> = ({ initVal, colors }) => {
+  const [val, setVal] = useState<number>(initVal ?? 0);
 
   return (
     <>
