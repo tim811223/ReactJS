@@ -39,7 +39,13 @@ export const Editor: FC<Props> = (props) => {
     setResolved(!resolved);
   };
   const handleSaveClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    props.updateTodo(props.id,{ title, priority, assignee, content, resolved });
+    props.updateTodo(props.id, {
+      title,
+      priority,
+      assignee,
+      content,
+      resolved,
+    });
     props.onCancel();
   };
 

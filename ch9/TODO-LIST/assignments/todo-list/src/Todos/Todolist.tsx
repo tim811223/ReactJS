@@ -10,11 +10,18 @@ export const Todolist: FC = () => {
     /** { ...i, ...update } 這表示原來的資料跟更新的資料合併, 若重複的內容update會蓋掉原來的資料 **/
     setTodos(todos.map((i) => (i.id === id ? { ...i, ...update } : i)));
   };
-
+  const deleteTodo = (id: string) => {
+    setTodos(todos.filter((i) => i.id !== id));
+  };
   return (
     <>
       {todos.map((i) => (
-        <TodoItem {...i} key={i.id} updateTodo={updateTodo} />
+        <TodoItem
+          {...i}
+          key={i.id}
+          updateTodo={updateTodo}
+          deleteTodo={deleteTodo}
+        />
       ))}
     </>
   );

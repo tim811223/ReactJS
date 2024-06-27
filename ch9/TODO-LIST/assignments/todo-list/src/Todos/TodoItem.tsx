@@ -19,6 +19,7 @@ export interface Props {
   assignee?: string;
   resolved: boolean;
   updateTodo: (id: string, update: Partial<TodoItemModel>) => void;
+  deleteTodo: (id: string) => void;
 }
 
 export const TodoItem: FC<Props> = ({
@@ -29,6 +30,7 @@ export const TodoItem: FC<Props> = ({
   assignee,
   resolved,
   updateTodo,
+  deleteTodo,
 }) => {
   var Types = "";
   Types =
@@ -50,6 +52,7 @@ export const TodoItem: FC<Props> = ({
    * ***********/
   const handleEditingClick = () => setEditing(true);
   const handleCancelClick = () => setEditing(false);
+  const handleDeleteClick = () => deleteTodo(id);
 
   return (
     <>
@@ -65,6 +68,7 @@ export const TodoItem: FC<Props> = ({
             resolved,
             onCancel: handleCancelClick,
             updateTodo,
+            deleteTodo,
           }}
         />
       ) : (
@@ -78,7 +82,11 @@ export const TodoItem: FC<Props> = ({
                 className="is-clickable mr-1"
                 onClick={handleEditingClick}
               />
-              <FontAwesomeIcon icon={faTrash} className="is-clickable" />
+              <FontAwesomeIcon
+                icon={faTrash}
+                className="is-clickable"
+                onClick={handleDeleteClick}
+              />
             </span>
           </div>
           <div className="message-body">
