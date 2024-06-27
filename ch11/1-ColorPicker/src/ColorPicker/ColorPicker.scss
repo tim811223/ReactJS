@@ -1,0 +1,9 @@
+.color-picker {
+  .palette {
+    display: flex;
+    .cell {
+      flex-grow: 1;
+      height: 1em;
+    }
+  }
+}
