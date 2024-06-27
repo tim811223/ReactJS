@@ -1,12 +1,18 @@
 import { ChangeEventHandler, FC, useState } from "react";
-import { Props as TodoItemProps, Priority } from "./TodoItem";
+import { Priority } from "./TodoItem";
 import teamMembers from "./team-members.json";
 
-/**
- * 若使用的資料型別是共同的Componment,但有要客製內容就可以用extends
- * 擴展TodoItemProps 到 Props後,就可以對Props新增客製內容
- * **/
-interface Props extends TodoItemProps {
+export interface TodoItemModel {
+  title: string;
+  content: string;
+  priority: number;
+  resolved: boolean;
+  assignee?: string;
+}
+
+interface Props {
+  todo?: TodoItemModel;
+  onSave: (todo: TodoItemModel) => void;
   onCancel: () => void;
 }
 
@@ -14,11 +20,15 @@ export const Editor: FC<Props> = (props) => {
   /*************
    * State Area
    * ***********/
-  const [title, setTitle] = useState<string>(props.title);
-  const [priority, setPriority] = useState<Priority>(props.priority);
-  const [assignee, setAssignee] = useState<string>(props.assignee ?? "");
-  const [content, setContent] = useState<string>(props.content);
-  const [resolved, setResolved] = useState<boolean>(props.resolved);
+  const [title, setTitle] = useState<string>(props.todo?.title ?? "");
+  const [priority, setPriority] = useState<Priority>(
+    props.todo?.priority ?? Priority.LOW,
+  );
+  const [assignee, setAssignee] = useState<string>(props.todo?.assignee ?? "");
+  const [content, setContent] = useState<string>(props.todo?.content ?? "");
+  const [resolved, setResolved] = useState<boolean>(
+    props.todo?.resolved ?? false,
+  );
 
   /*************
    * Handler Area
@@ -38,16 +48,14 @@ export const Editor: FC<Props> = (props) => {
   const handleResolvedChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setResolved(!resolved);
   };
-  const handleSaveClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    props.updateTodo(props.id, {
+  const handleSaveClick: React.MouseEventHandler<HTMLButtonElement> = (e) =>
+    props.onSave({
       title,
       priority,
       assignee,
       content,
       resolved,
     });
-    props.onCancel();
-  };
 
   return (
     <div className="box">

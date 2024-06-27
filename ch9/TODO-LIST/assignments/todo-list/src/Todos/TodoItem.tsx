@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Editor } from "./Editor";
+import { Editor, TodoItemModel as EditorItemModel } from "./Editor";
 import { TodoItemModel } from "./utils/getTodoItems";
 
 export enum Priority {
@@ -50,6 +50,10 @@ export const TodoItem: FC<Props> = ({
   /*************
    * Handler Area
    * ***********/
+  const handleSaveClick = (todo: EditorItemModel) => {
+    updateTodo(id, todo);
+    setEditing(false);
+  };
   const handleEditingClick = () => setEditing(true);
   const handleCancelClick = () => setEditing(false);
   const handleDeleteClick = () => deleteTodo(id);
@@ -60,15 +64,15 @@ export const TodoItem: FC<Props> = ({
         /** 編輯畫面 **/
         <Editor
           {...{
-            id,
-            title,
-            content,
-            priority,
-            assignee,
-            resolved,
+            todo: {
+              title,
+              content,
+              priority,
+              assignee,
+              resolved,
+            },
+            onSave: handleSaveClick,
             onCancel: handleCancelClick,
-            updateTodo,
-            deleteTodo,
           }}
         />
       ) : (
