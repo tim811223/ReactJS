@@ -13,6 +13,7 @@ export const L: FC<Props> = ({ hue }) => {
       <Palette
         initVal={50}
         colors={_.range(100).map((l) => hsl(hue, 100, l))}
+        onSelect={(v) => console.log(v)}
       />
     </>
   );
