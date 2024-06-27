@@ -6,7 +6,7 @@ const Items = getTodoItems(10);
 
 export const Todolist: FC = () => {
   const [todos, setTodo] = useState<TodoItemModel[]>(Items);
-  const updateTodo = (id: string, update: TodoItemModel) => {};
+  const updateTodo = (id: string, update: Partial<TodoItemModel>) => {};
 
   return (
     <>
