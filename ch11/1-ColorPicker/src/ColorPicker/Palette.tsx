@@ -8,8 +8,10 @@ export const Palette: FC<Props> = ({ colors }) => {
   return (
     <>
       <div className="palette">
-        {colors.map((c) => (
-          <div style={{ backgroundColor: c }} className="cell" key={c}></div>
+        {colors.map((c, i) => (
+          <div style={{ backgroundColor: c }} className="cell" key={c}>
+            <span className="val">{i}</span>
+          </div>
         ))}
       </div>
     </>
