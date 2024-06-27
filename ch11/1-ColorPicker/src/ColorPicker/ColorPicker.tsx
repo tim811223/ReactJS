@@ -1,5 +1,6 @@
 import "./ColorPicker.scss";
 import { FC } from "react";
+import _ from "lodash";
 import { Palette } from "./Palette";
 import { hsl } from "./util";
 
@@ -8,9 +9,7 @@ export const ColorPicker: FC = () => {
     <>
       <div>
         <div className="color-picker">
-          <Palette
-            colors={[...Array(360).keys()].map((h) => hsl(h, 100, 50))}
-          />
+          <Palette colors={_.range(360).map((h) => hsl(h, 100, 50))} />
         </div>
       </div>
     </>
