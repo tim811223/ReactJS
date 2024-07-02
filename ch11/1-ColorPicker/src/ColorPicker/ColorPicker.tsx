@@ -2,6 +2,7 @@ import "./ColorPicker.scss";
 import { FC } from "react";
 import { HSL } from "./HSL";
 import "bulma/css/bulma.min.css";
+import cv from 'color-convert';
 
 export const ColorPicker: FC = () => {
   return (
