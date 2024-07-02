@@ -4,12 +4,12 @@ import _ from "lodash";
 import { hsl } from "./util";
 
 interface Props {
-  initVal:number;
+  initVal: number;
   hue: number;
   onSelect: (v: number) => void;
 }
 
-export const L: FC<Props> = ({ initVal,hue,onSelect }) => {
+export const L: FC<Props> = ({ initVal, hue, onSelect }) => {
   return (
     <>
       <Palette
