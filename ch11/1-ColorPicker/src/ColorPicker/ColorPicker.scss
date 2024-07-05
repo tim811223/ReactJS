@@ -1,4 +1,10 @@
 .color-picker {
+  .preview {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .palette {
     user-select: none;
     display: flex;
