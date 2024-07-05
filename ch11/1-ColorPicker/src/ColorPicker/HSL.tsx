@@ -1,5 +1,5 @@
 import "./ColorPicker.scss";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { H } from "./H";
 import { S } from "./S";
 import { L } from "./L";
@@ -14,17 +14,23 @@ export const HSL: FC<Props> = ({ onSelect }) => {
   const [s, setS] = useState<number>(initS);
   const [l, setL] = useState<number>(initL);
 
+  /**
+   * useEffect這個Hook表示
+   * 監測[h, s, l]內的state,如果有修改就執行 onSelect(h, s, l);
+   * 但有缺點會重複render
+   */
+  useEffect(() => {
+    onSelect(h, s, l);
+  }, [h, s, l]);
+
   const handleHSelect = (h: number) => {
     setH(h);
-    onSelect(h, s, l);
   };
   const handleSSelect = (s: number) => {
     setS(s);
-    onSelect(h, s, l);
   };
   const handleLSelect = (l: number) => {
     setL(l);
-    onSelect(h, s, l);
   };
 
   return (
