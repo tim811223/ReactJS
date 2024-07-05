@@ -1,5 +1,5 @@
 import "./ColorPicker.scss";
-import { FC, useEffect, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { H } from "./H";
 import { S } from "./S";
 import { L } from "./L";
@@ -45,3 +45,9 @@ export const HSL: FC<Props> = ({ onSelect }) => {
     </>
   );
 };
+
+/**
+ * memo 就是個component
+ * 輸入輸出都是component,只有在prop更動時在parent component  render時一起re-render
+ */
+export const MemoHSL = memo(HSL);
