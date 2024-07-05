@@ -14,7 +14,7 @@ export const S: FC<Props> = ({ initVal, hue, onSelect }) => {
     <>
       <Palette
         initVal={initVal}
-        colors={_.range(360).map((s) => hsl(hue, s, 50))}
+        colors={_.range(100).map((s) => hsl(hue, s, 50))}
         onSelect={onSelect}
       />
     </>
