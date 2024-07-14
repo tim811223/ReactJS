@@ -4,7 +4,7 @@ import { TeaShop } from "./Tea-Shop/TeaShop";
 export const App = () => {
   return (
     <>
-      <TeaShop />
+      <TeaShop isPlaced={false} />
     </>
   );
 };

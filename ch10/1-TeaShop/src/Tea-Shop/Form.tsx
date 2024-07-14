@@ -1,23 +1,37 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Tea } from "../models/enum/Tea";
 import { Topping } from "../models/enum/Topping";
 import { Size } from "../models/enum/Size";
 import { sugar_max_Levels, ice_max_Levels } from "../models/Item";
+import { Item } from "../models/Item";
+
+interface Props {
+  item?: Item;
+  onSave: (item: Item) => void;
+}
 
 /**
  * 表單
  */
-export const Form = () => {
+export const Form: FC<Props> = (props) => {
+  /*************
+   * Hook Area
+   * ***********/
+
   /*************
    * State Area
    * ***********/
-  const [tea, setTea] = useState<Tea>(Tea.BlackTea);
-  const [size, setSize] = useState<Size>();
-  const [sugar, setSugar] = useState<number>();
-  const [ice, setIce] = useState<number>();
-  const [MilkFoam, setMilkFoam] = useState<boolean>(false);
-  const [toppings, setToppings] = useState<Topping[]>([]);
-  const [quantity, setQuantity] = useState<number>(1);
+  const [tea, setTea] = useState<Tea>(props.item?.tea ?? Tea.BlackTea);
+  const [size, setSize] = useState<Size>(props.item?.size ?? Size.Small);
+  const [sugar, setSugar] = useState<number>(props.item?.sugar ?? 0);
+  const [ice, setIce] = useState<number>(props.item?.ice ?? 0);
+  const [MilkFoam, setMilkFoam] = useState<boolean>(
+    props.item?.withFoam ?? false,
+  );
+  const [toppings, setToppings] = useState<Topping[]>(
+    props.item?.toppings ?? [],
+  );
+  const [quantity, setQuantity] = useState<number>(props.item?.quantity ?? 1);
 
   /*************
    * Handler Area
@@ -62,7 +76,17 @@ export const Form = () => {
   const handleQuantityBlur: React.FocusEventHandler<HTMLInputElement> = () => {
     setQuantity(isNaN(quantity) || quantity < 1 ? 1 : quantity);
   };
-  const handleSendForm: React.MouseEventHandler<HTMLButtonElement> = () => {};
+  const handleSendForm: React.MouseEventHandler<HTMLButtonElement> = () => {
+    props.onSave({
+      tea,
+      size,
+      sugar,
+      ice,
+      withFoam: MilkFoam,
+      toppings,
+      quantity,
+    });
+  };
   const handleCancel: React.MouseEventHandler<HTMLButtonElement> = () => {};
 
   return (
@@ -86,7 +110,7 @@ export const Form = () => {
               <label className="checkbox">
                 <input
                   type="checkbox"
-                  checked={MilkFoam}
+                  defaultChecked={MilkFoam}
                   onClick={handleMilkFoamChange}
                 />
                 Milk Foam
@@ -104,12 +128,12 @@ export const Form = () => {
           <div className="field is-narrow">
             <div className="control">
               {Object.entries(Size).map(([k, v]) => (
-                <label className="radio">
+                <label className="radio" key={k}>
                   <input
                     type="radio"
                     name="Size"
                     value={v}
-                    key={k}
+                    checked={size === v}
                     onChange={handleSizeChange}
                   />
                   {v}
@@ -128,12 +152,13 @@ export const Form = () => {
           <div className="field is-narrow">
             <div className="control">
               {Array.from({ length: sugar_max_Levels }, (key, value) => (
-                <label className="radio">
+                <label className="radio" key={value}>
                   <input
                     type="radio"
                     name="Sugar"
                     value={value}
                     onChange={handleSugarChange}
+                    checked={sugar === value}
                   />
                   {value}
                 </label>
@@ -151,12 +176,13 @@ export const Form = () => {
           <div className="field is-narrow">
             <div className="control">
               {Array.from({ length: ice_max_Levels }, (key, value) => (
-                <label className="radio">
+                <label className="radio" key={value}>
                   <input
                     type="radio"
                     name="Ice"
                     value={value}
                     onChange={handleIceChange}
+                    checked={ice === value}
                   />
                   {value}
                 </label>
@@ -226,7 +252,7 @@ export const Form = () => {
           </button>
         </p>
         <p className="control">
-          <button className="button is-light" onClick={handleCancel}>
+          <button className="button is-light" onClick={handleCancel} disabled>
             Cancel
           </button>
         </p>
