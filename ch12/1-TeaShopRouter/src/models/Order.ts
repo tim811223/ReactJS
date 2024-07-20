@@ -1,6 +1,7 @@
-import { Item } from "./Item";
+import { ShoppingCart } from "./ShoppingCart";
 
-export interface Order extends Item {
+export interface Order {
   id: string;
-  price: number;
+  itemShoppingCart: ShoppingCart[];
+  TotalPrice: number;
 }
