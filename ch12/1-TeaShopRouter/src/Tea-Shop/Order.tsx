@@ -10,6 +10,7 @@ import { v4 as uuid } from "uuid";
 import { _item, _Order, _ShoppingCart } from "../FakeData/Data";
 import { Receipt } from "./Receipt";
 import { Order as OrderModels } from "../models/Order";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   isPlaced: boolean;
@@ -23,6 +24,7 @@ export const Order: FC<Props> = (prop) => {
   /*************
    * Hook Area
    * ***********/
+  const navigate = useNavigate();
 
   /*************
    * State Area
@@ -70,16 +72,29 @@ export const Order: FC<Props> = (prop) => {
       _TotalPrice += item.price;
     });
 
-    addOrders({
-      id: id,
-      TotalPrice: _TotalPrice,
-      itemShoppingCart: ShoppingCart,
-    });
+    // //(方法1)訂單編號存入state
+    // addOrders({
+    //   id: id,
+    //   TotalPrice: _TotalPrice,
+    //   itemShoppingCart: ShoppingCart,
+    // });
+    // //(方法2)sessionStorage
+    sessionStorage.setItem(
+      id,
+      JSON.stringify({
+        id: id,
+        TotalPrice: _TotalPrice,
+        itemShoppingCart: ShoppingCart,
+      }),
+    );
 
-    changeisPlaced();
+    // (測試用)切換component顯示訂單資訊
+    // changeisPlaced();
 
-    // 透過pushState改變網址
-    window.history.pushState(null, "", "/receipt/" + id);
+    // //(方法1)window.history切換頁
+    // window.history.pushState(null, "", "/receipt/" + id);
+    // //(方法2)Hook navigate切換頁
+    navigate("/receipt?id=" + id);
   };
   const handleAddShoppingCart = (item: Item) => {
     const totalPrice = ItemPrice(item);
@@ -102,7 +117,7 @@ export const Order: FC<Props> = (prop) => {
       </div>
 
       <div hidden={!isPlaced}>
-        <Receipt order={order} />
+        <Receipt orderID={""} />
       </div>
     </>
   );

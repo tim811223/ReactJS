@@ -13,7 +13,7 @@ export const Router: FC = () => {
         <Routes>
           <Route path="/" element={<TeaShop />}>
             <Route path="order" element={<Order isPlaced={false} />}></Route>
-            <Route path="receipt" element={<Receipt order={_Order} />}></Route>
+            <Route path="receipt" element={<Receipt orderID={""} />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
