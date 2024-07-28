@@ -5,12 +5,14 @@ import { TeaShop } from "./Tea-Shop/TeaShop";
 import { Receipt } from "./Tea-Shop/Receipt";
 import { _Order } from "./FakeData/Data";
 import { Order } from "./Tea-Shop/Order";
+import { Navbar } from "./Navbar";
 
 export const Router: FC = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="nav" element={<Navbar />}></Route>
           <Route path="/" element={<TeaShop />}>
             <Route path="order" element={<Order isPlaced={false} />}></Route>
             <Route path="receipt" element={<Receipt orderID={""} />}></Route>
