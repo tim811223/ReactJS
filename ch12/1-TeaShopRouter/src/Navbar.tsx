@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 export const Navbar: FC = () => {
   const [menuVisable, setmenuVisable] = useState(false);
@@ -79,6 +80,7 @@ export const Navbar: FC = () => {
           </div>
         </div>
       </nav>
+      <Outlet />
     </>
   );
 };

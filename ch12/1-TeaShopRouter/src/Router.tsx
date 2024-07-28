@@ -12,14 +12,15 @@ export const Router: FC = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="nav" element={<Navbar />}></Route>
-          <Route path="/" element={<TeaShop />}>
-            <Route path="order" element={<Order isPlaced={false} />}></Route>
-            <Route path="receipt" element={<Receipt orderID={""} />}></Route>
-            <Route
-              path="receipt/:orderNumber"
-              element={<Receipt orderID={""} />}
-            ></Route>
+          <Route path="/" element={<Navbar />}>
+            <Route path="Tea-shop" element={<TeaShop />}>
+              <Route path="order" element={<Order isPlaced={false} />}></Route>
+              <Route path="receipt" element={<Receipt orderID={""} />}></Route>
+              <Route
+                path="receipt/:orderNumber"
+                element={<Receipt orderID={""} />}
+              ></Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
