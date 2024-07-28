@@ -14,6 +14,10 @@ export const Router: FC = () => {
           <Route path="/" element={<TeaShop />}>
             <Route path="order" element={<Order isPlaced={false} />}></Route>
             <Route path="receipt" element={<Receipt orderID={""} />}></Route>
+            <Route
+              path="receipt/:orderNumber"
+              element={<Receipt orderID={""} />}
+            ></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Order } from "../models/Order";
+import { useParams } from "react-router-dom";
 
 interface Props {
   orderID?: string;
@@ -9,8 +10,10 @@ interface Props {
  * 已送出的訂單
  */
 export const Receipt: FC<Props> = (prop) => {
-  let params = new URL(document.location.toString()).searchParams;
-  let _orderid = params.get("id") == null ? prop.orderID : params.get("id");
+  const { orderNumber } = useParams(); //對應到<Route path="receipt/:orderNumber" >的orderNumber
+  let params = new URL(document.location.toString()).searchParams; //取得網址參數 receipt?id=xxxx
+  var array = [orderNumber, params.get("id"), prop.orderID]; //取得所有參數名稱
+  let _orderid = array.find((x) => x != null && x != undefined);
 
   /*************
    * State Area
